@@ -1,0 +1,94 @@
+<!-- <?php
+// Connect to the database
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "college_management";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Fetch feedback by category
+$student_feedback_query = "SELECT * FROM feedback WHERE category='student'";
+$teacher_feedback_query = "SELECT * FROM feedback WHERE category='teacher'";
+
+$student_feedback = $conn->query($student_feedback_query);
+$teacher_feedback = $conn->query($teacher_feedback_query);
+?> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Management</title>
+    <link rel="stylesheet" href="feedback.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>Admin Dashboard</h2>
+        <ul>
+            <li><a href="admin.html">Dashboard</a></li>
+            <li><a href="add-student.html">Add Student</a></li>
+            <li><a href="add-teacher.html">Add Teacher</a></li>
+            <li><a href="add-event.html">Add Event</a></li>
+            <li><a href="feedback-management.php" class="active">Feedback Management</a></li>
+            <li><a href="view-applications.html">View Applications</a></li>
+            <li><a href="manage-timetable.html">Manage Time-table</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <header>
+            <h1>Feedback Management</h1>
+            <p>Review feedback from students and teachers.</p>
+        </header>
+
+        <!-- Feedback Sections -->
+        <section class="feedback-section">
+            <h2>Student Feedback</h2>
+            <div class="feedback-container">
+                <!-- <?php
+                if ($student_feedback->num_rows > 0) {
+                    while ($row = $student_feedback->fetch_assoc()) {
+                        echo "<div class='feedback-card'>
+                                <h3>" . $row['name'] . "</h3>
+                                <p>" . $row['message'] . "</p>
+                                <span class='date'>" . $row['date'] . "</span>
+                              </div>";
+                    }
+                } else {
+                    echo "<p>No feedback available from students.</p>";
+                }
+                ?> -->
+            </div>
+        </section>
+
+        <section class="feedback-section">
+            <h2>Teacher Feedback</h2>
+            <div class="feedback-container">
+                <!-- <?php
+                if ($teacher_feedback->num_rows > 0) {
+                    while ($row = $teacher_feedback->fetch_assoc()) {
+                        echo "<div class='feedback-card'>
+                                <h3>" . $row['name'] . "</h3>
+                                <p>" . $row['message'] . "</p>
+                                <span class='date'>" . $row['date'] . "</span>
+                              </div>";
+                    }
+                } else {
+                    echo "<p>No feedback available from teachers.</p>";
+                } -->
+                <!-- ?> -->
+            </div>
+        </section>
+    </div>
+<!-- 
+    <?php $conn->close(); ?> -->
+</body>
+</html>
