@@ -34,6 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = htmlspecialchars($_POST['email']);
     $phone = htmlspecialchars($_POST['phone']);
     $address = htmlspecialchars($_POST['address']);
+    $section = htmlspecialchars($_POST['section']);  // Added section field
 
     // Handle file uploads
     $photo = $student['photo'];
@@ -70,10 +71,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
-    // Update student table
-    $query = "UPDATE student SET first_name = ?, last_name = ?, dob = ?, email = ?, phone = ?, address = ?, photo = ?, signature = ?, documents = ? WHERE id = ?";
+    // Update student table including section
+    $query = "UPDATE student SET first_name = ?, last_name = ?, dob = ?, email = ?, phone = ?, address = ?, photo = ?, signature = ?, documents = ?, section = ? WHERE id = ?";
     $stmt = $conn->prepare($query);
-    $stmt->bind_param("sssssssssi", $first_name, $last_name, $dob, $email, $phone, $address, $photo, $signature, $documents, $student_id);
+    $stmt->bind_param("ssssssssssi", $first_name, $last_name, $dob, $email, $phone, $address, $photo, $signature, $documents, $section, $student_id);
 
     if ($stmt->execute()) {
         $message = "Profile updated successfully!";
@@ -106,7 +107,6 @@ $conn->close();
         </div>
         <ul>
             <li><a href="student-dashboard.php">Dashboard</a></li>
-            <li><a href="notices.php">Notices</a></li>
             <li><a href="events.php">Events</a></li>
             <li><a href="assignments.php">Assignments</a></li>
             <li><a href="profile-update.php" class="active">Profile Update</a></li>
@@ -159,6 +159,13 @@ $conn->close();
                 <div class="form-group">
                     <label for="address">Full Address</label>
                     <textarea id="address" name="address" rows="4" required><?php echo htmlspecialchars($student['address']); ?></textarea>
+                </div>
+
+                <!-- Section Field -->
+                <h3>Section</h3>
+                <div class="form-group">
+                    <label for="section">Section</label>
+                    <input type="text" id="section" name="section" value="<?php echo htmlspecialchars($student['section']); ?>" required>
                 </div>
 
                 <!-- Upload Documents -->

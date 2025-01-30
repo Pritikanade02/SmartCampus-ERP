@@ -3,6 +3,7 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
     display: flex;
+    background-color: #f4f6f9; /* Light background color */
 }
 
 /* Sidebar */
@@ -13,15 +14,13 @@ body {
     height: 100vh;
     padding: 20px;
     position: fixed;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
 }
 
-.sidebar .student-info h2 {
+.sidebar .teacher-info h2 {
     margin: 0;
     font-size: 1.5rem;
-}
-
-.sidebar .student-info p {
-    margin: 5px 0;
+    color: #ecf0f1;
 }
 
 .sidebar ul {
@@ -51,27 +50,72 @@ body {
 /* Main Content */
 .main-content {
     margin-left: 270px;
-    padding: 20px;
+    padding: 40px;
     width: 100%;
+    background-color: #fff; /* White background for main content */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
 }
 
 header h1 {
-    font-size: 2rem;
+    font-size: 2.5rem;
     color: #2c3e50;
 }
 
 header p {
-    font-size: 1rem;
+    font-size: 1.2rem;
     color: #7f8c8d;
+    margin-top: 10px;
 }
 
-/* Content Section */
-.content {
+/* Features Section */
+.features {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     gap: 20px;
+    flex-wrap: wrap;
 }
 
+/* Feature Block Style */
+.feature-block {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 30%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.feature-block:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.feature-block h3 {
+    font-size: 1.4rem;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+.feature-block a {
+    text-decoration: none;
+    color: #2c3e50;
+}
+
+.feature-block img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 20px;
+}
+
+/* Card Styling */
 .card {
     background: #ecf0f1;
     padding: 20px;
@@ -85,55 +129,33 @@ header p {
     font-size: 1.5rem;
 }
 
-.feature-block a{
-    text-decoration: none;
-}
 .card p {
     color: #7f8c8d;
     margin: 5px 0;
 }
 
-.btn {
+.card .btn {
     display: inline-block;
-    margin-top: 10px;
     padding: 10px 15px;
     background-color: #1abc9c;
     color: #fff;
-    text-decoration: none;
     border-radius: 5px;
+    text-decoration: none;
     font-size: 1rem;
     transition: background-color 0.3s;
 }
 
-.btn:hover {
+.card .btn:hover {
     background-color: #16a085;
 }
 
-.feature-block {
-    display: inline-block;
-    text-align: center;
-    width: 30%;
-    margin: 15px;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background-color: #fff;
-    transition: transform 0.2s, box-shadow 0.2s;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
+/* Make the page responsive */
+@media (max-width: 768px) {
+    .features {
+        flex-direction: column;
+    }
 
-.feature-block:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.feature-block img {
-    width: 80px;
-    height: 80px;
-    margin-bottom: 10px;
-}
-
-.feature-block h3 {
-    font-size: 18px;
-    color: #333;
+    .feature-block {
+        width: 100%;
+    }
 }

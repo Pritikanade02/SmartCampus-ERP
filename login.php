@@ -28,12 +28,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($result->num_rows > 0) {
         $student = $result->fetch_assoc();
-        if ($password === $student['password']) {  // Match password directly (no hashing)
+
+        // If using password hashing, replace this with password_verify
+        if ($password === $student['password']) {  // Use password_verify($password, $student['password']) for hashed passwords
             // Set session variables for student info
             $_SESSION['student_id'] = $student['id'];
             $_SESSION['student_name'] = $student['first_name'] . " " . $student['last_name'];
             $_SESSION['course'] = $student['course'];
             $_SESSION['semester'] = $student['semester'];
+            $_SESSION['section'] = $student['section'];  // Set the section here
+
+            // Debugging line (to verify the section is set)
+            echo "Section: " . $_SESSION['section'];
 
             // Redirect to student dashboard
             header("Location: student-dashboard.php");
@@ -50,4 +56,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $conn->close();
 }
 ?>
-

@@ -34,12 +34,11 @@ $semester = $_SESSION['semester'];
             <!-- <p><strong>Roll No:</strong> <?php echo $rollNumber; ?></p> -->
         </div>
         <ul>
-            <li><a href="notices.html">Notices</a></li>
-            <li><a href="events.html">Events</a></li>
+            <li><a href="events.php">Events</a></li>
             <li><a href="assignments.html">Assignments</a></li>
             <li><a href="profile-update.php">Profile Update</a></li>
             <li><a href="attendance.html">Attendance</a></li>
-            <li><a href="time-table.html">Time-table</a></li>
+            <li><a href="view_timtable_student.php">Time-table</a></li>
             <li><a href="applications.html">Applications</a></li>
         </ul>
     </div>
@@ -53,12 +52,11 @@ $semester = $_SESSION['semester'];
         <section class="quick-links">
             <h2>Dashboard</h2>
             <div class="links">
-                <a href="notices.html" class="card">Notices</a>
                 <a href="events.php" class="card">Events</a>
                 <a href="assignments.php" class="card">Assignments</a>
                 <a href="profile-update.php" class="card">Profile Update</a>
                 <a href="attendance.php" class="card">Attendance</a>
-                <a href="time-table.php" class="card">Time-table</a>
+                <a href="view_timtable_student.php" class="card">Time-table</a>
                 <a href="applications.php" class="card">Applications</a>
             </div>
         </section>
