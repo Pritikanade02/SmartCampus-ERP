@@ -40,13 +40,14 @@ $result = $conn->query($query);
         </div>
         <ul>
             <li><a href="student-dashboard.php">Dashboard</a></li>
-            <li><a href="notices.php">Notices</a></li>
             <li><a href="events.php" class="active">Events</a></li>
-            <li><a href="assignments.php">Assignments</a></li>
+            <li><a href="view_assignment.php">Assignments</a></li>
             <li><a href="profile-update.php">Profile Update</a></li>
-            <li><a href="attendance.php">Attendance</a></li>
-            <li><a href="time-table.php">Time-table</a></li>
-            <li><a href="applications.php">Applications</a></li>
+            <li><a href="#">Attendance</a></li>
+            <li><a href="view_timtable_student.php">Time-table</a></li>
+            <li><a href="#">Applications</a></li>
+            <li><a href="logout.html">Logout</a></li>
+
         </ul>
     </div>
 

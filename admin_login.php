@@ -50,15 +50,25 @@ mysqli_close($conn);
     <link rel="stylesheet" href="admin_styles.css">
 </head>
 <body>
-    <h2>Admin Login</h2>
-    <form method="POST" action="admin_login.php">
-        <label for="username">Username:</label><br>
-        <input type="text" id="username" name="username" required><br><br>
-        
-        <label for="password">Password:</label><br>
-        <input type="password" id="password" name="password" required><br><br>
-        
-        <button type="submit">Login</button>
-    </form>
+
+    <div class="login-container">
+        <div class="login-box">
+            <h2>Admin Login</h2>
+            <form method="POST" action="admin_login.php">
+                <div class="input-group">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                
+                <div class="input-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+
+                <button type="submit" class="login-btn">Login</button>
+            </form>
+        </div>
+    </div>
+
 </body>
 </html>

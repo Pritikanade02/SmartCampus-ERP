@@ -59,9 +59,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <h2><?php echo htmlspecialchars($_SESSION['teacher_name']); ?></h2>
         </div>
         <ul>
-            <li><a href="teacher-dashboard.php">Dashboard</a></li>
-            <li><a href="upload-event.php" class="active">Upload Event</a></li>
-            <li><a href="logout.php">Logout</a></li>
+            <li><a href="teacher_dashboard.php">Dashboard</a></li>
+            <li><a href="attendance.html">Mark Attendance</a></li>
+            <li><a href="upload_assignment.html">Upload Assignment</a></li>
+            <li><a href="upload_event.php" class="active">Events</a></li>
+            <li><a href="logout.html">Logout</a></li>
         </ul>
     </div>
 
@@ -74,7 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <?php if (isset($error)) { echo "<p class='error'>$error</p>"; } ?>
             <?php if (isset($success_message)) { echo "<p class='success'>$success_message</p>"; } ?>
 
-            <form action="upload-event.php" method="POST">
+            <form action="upload_event.php" method="POST">
                 <label for="title">Event Title</label>
                 <input type="text" id="title" name="title" required>
 

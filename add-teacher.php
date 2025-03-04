@@ -16,6 +16,8 @@ if ($conn->connect_error) {
 // Check if the form is submitted
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Collect form data
+    $username = $_POST['username'];
+    $password = $_POST['password'];
     $teacher_name = $_POST['teacher_name'];
     $experience = $_POST['experience'];
     $education = $_POST['education'];
@@ -25,12 +27,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $address = $_POST['address'];
 
     // SQL query to insert teacher data
-    $sql = "INSERT INTO teacher (teacher_name, experience, education, subject, email, phone, address)
-            VALUES (?, ?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO teacher (username, password, teacher_name, experience, education, subject, email, phone, address)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     // Prepare and bind statement
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sisssss", $teacher_name, $experience, $education, $subject, $email, $phone, $address);
+    $stmt->bind_param("sssisssss", $username, $password, $teacher_name, $experience, $education, $subject, $email, $phone, $address);
 
     if ($stmt->execute()) {
         echo "Teacher added successfully!";
@@ -44,4 +46,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 // Close the connection
 $conn->close();
+echo "<br><a href='admin.html'>Back To Admin Dashboard</a>";
 ?>

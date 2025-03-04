@@ -28,9 +28,11 @@ $teacherName = $_SESSION['teacher_name'];
     <div class="sidebar">
         <ul>
             <li><a href="teacher_dashboard.php" class="active">Dashboard</a></li>
-            <li><a href="mark-attendance.php">Mark Attendance</a></li>
-            <li><a href="upload-assignment.php">Upload Assignment</a></li>
-            <li><a href="#">Events</a></li>
+            <li><a href="attendance.html">Mark Attendance</a></li>
+            <li><a href="upload_assignment.html">Upload Assignment</a></li>
+            <li><a href="upload_event.php">Events</a></li>
+            <li><a href="forget_password_teacher.html">Forget or Update Password</a></li>
+            <li><a href="logout.html">Logout</a></li>
         </ul>
     </div>
 
@@ -48,7 +50,7 @@ $teacherName = $_SESSION['teacher_name'];
                 </a>
             </div>
             <div class="feature-block">
-                <a href="upload-assignment.php">
+                <a href="upload_assignment.html">
                     <h3>Upload Assignment</h3>
                 </a>
             </div>

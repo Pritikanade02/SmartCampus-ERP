@@ -1,35 +1,27 @@
 <?php
 session_start();
-
+include "db_connect.php";
 if (!isset($_SESSION['student_name'])) {
     header("Location: login.html");
     exit;
 }
-
-include "db_connect.php";
-
 // Fetch student details from session
 $course = $_SESSION["course"];
 $section = $_SESSION["section"];
 $semester = $_SESSION["semester"];
-
-// Fetch timetable for student
-$sql = "SELECT timetable_file FROM timetables 
-        WHERE course='$course' AND section='$section' AND semester='$semester' AND role='student'";
-$result = mysqli_query($conn, $sql);
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Dashboard</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>View Assignments</title>
     <style>
         /* General Styles */
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: Arial, sans-serif;
             background: #f5f5f5;
             margin: 0;
             padding: 0;
@@ -82,7 +74,7 @@ $result = mysqli_query($conn, $sql);
             transition: background 0.3s, transform 0.2s;
         }
 
-        .sidebar ul li a:hover, .sidebar ul li a.active {
+        .sidebar ul li a:hover {
             background-color: #1abc9c;
             transform: scale(1.05);
         }
@@ -98,44 +90,58 @@ $result = mysqli_query($conn, $sql);
             margin-top: 50px;
             position: relative;
             left: 270px;
-            text-align: center;
-        }
-
-        h1 {
-            color: #333;
-            font-size: 2rem;
-            margin-bottom: 10px;
         }
 
         h2 {
-            color: #007bff;
-            font-size: 1.5rem;
+            color: #333;
+            text-align: center;
             margin-bottom: 20px;
         }
 
-        /* Timetable Link */
-        .download-btn {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #3498db;
+        /* Table Styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+
+        th {
+            background: #007bff;
             color: white;
-            font-size: 1.1rem;
-            border-radius: 5px;
+            font-size: 1rem;
+            text-transform: uppercase;
+        }
+
+        td {
+            background: #f9f9f9;
+            font-size: 1rem;
+        }
+
+        tr:nth-child(even) td {
+            background: #eef2f3;
+        }
+
+        /* Download Link */
+        a {
+            color: #1abc9c;
             text-decoration: none;
-            transition: 0.3s;
-        }
-
-        .download-btn:hover {
-            background-color:rgb(47, 141, 203);
-        }
-
-        /* No Timetable Message */
-        .no-timetable {
-            color: red;
-            font-size: 1.2rem;
             font-weight: bold;
+            transition: color 0.3s ease-in-out;
         }
 
+        a:hover {
+            color: #16a085;
+            text-decoration: underline;
+        }
 
     </style>
 </head>
@@ -147,30 +153,46 @@ $result = mysqli_query($conn, $sql);
             <p><strong>Semester:</strong> <?php echo $semester; ?></p>
         </div>
         <ul>
-            <li><a href="student-dashboard.php">Dashboard</a></li>
+             <li><a href="student-dashboard.php">Dashboard</a></li>
             <li><a href="events.php">Events</a></li>
-            <li><a href="view_assignment.html">Assignments</a></li>
+            <li><a href="view_assignment.php">Assignments</a></li>
             <li><a href="profile-update.php">Profile Update</a></li>
             <li><a href="#">Attendance</a></li>
-            <li><a href="view_timtable_student.php" class="active">Time-table</a></li>
+            <li><a href="view_timtable_student.php">Time-table</a></li>
             <li><a href="#">Applications</a></li>
             <li><a href="logout.html">Logout</a></li>
 
         </ul>
     </div>
-
     <div class="container">
-        <h1>Welcome, <?php echo $_SESSION['student_name']; ?></h1>
-        <h2>Your Timetable</h2>
-
-        <?php
-        if (mysqli_num_rows($result) > 0) {
-            $row = mysqli_fetch_assoc($result);
-            echo "<a class='download-btn' href='" . $row['timetable_file'] . "' target='_blank'>📄 View Timetable</a>";
-        } else {
-            echo "<p class='no-timetable'>No timetable uploaded yet.</p>";
-        }
-        ?>
+        <h2>Assignments</h2>
+        <table>
+            <tr>
+                <th>Teacher</th>
+                <th>Course</th>
+                <th>Semester</th>
+                <th>Section</th>
+                <th>Deadline</th>
+                <th>Download</th>
+            </tr>
+            <?php
+            include 'db_connect.php'; 
+            
+            $query = "SELECT * FROM assignments ORDER BY uploaded_at DESC";
+            $result = mysqli_query($conn, $query);
+            
+            while ($row = mysqli_fetch_assoc($result)) {
+                echo "<tr>
+                        <td>".$row['teacher_name']."</td>
+                        <td>".$row['course']."</td>
+                        <td>".$row['semester']."</td>
+                        <td>".$row['section']."</td>
+                        <td>".$row['deadline']."</td>
+                        <td><a href='".$row['file_path']."' download='".$row['file_name']."'>Download</a></td>
+                      </tr>";
+            }
+            ?>
+        </table>
     </div>
 </body>
 </html>

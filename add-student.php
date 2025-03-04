@@ -17,19 +17,20 @@ if ($conn->connect_error) {
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Collect form data from admin
     $username = $_POST['username'];
-    $password = $_POST['password']; // Plain text password
+    $password = $_POST['password']; // Plain text password (should be hashed)
     $first_name = $_POST['first_name'];
     $email = $_POST['email'];
     $course = $_POST['course'];
     $semester = $_POST['semester'];
+    $section = $_POST['section'];
 
-    // Insert data into the student table
-    $sql = "INSERT INTO student (username, password, first_name, email, course, semester)
-            VALUES (?, ?, ?, ?, ?, ?)";
+    // Prepare SQL statement
+    $sql = "INSERT INTO student (username, password, first_name, email, course, semester, section)
+            VALUES (?, ?, ?, ?, ?, ?, ?)";
 
     // Prepare and bind
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sssssi", $username, $password, $first_name, $email, $course, $semester);
+    $stmt->bind_param("sssssis", $username, $password, $first_name, $email, $course, $semester, $section);
 
     if ($stmt->execute()) {
         echo "Student added successfully!";
@@ -41,6 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->close();
 }
 
-// Close the connection
 $conn->close();
+echo "<br><a href='admin.html'>Back To Admin Dashboard</a>";
+
 ?>

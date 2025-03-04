@@ -3,101 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Attendance</title>
+    <title>Mark Attendance</title>
     <link rel="stylesheet" href="attendance.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-    <!-- Sidebar -->
-    <div class="sidebar">
-        <div class="student-info">
-            <h2>John Doe</h2>
-            <p><strong>Class:</strong> BBA CA - Semester 5</p>
-            <p><strong>Roll No:</strong> 12345</p>
-        </div>
-        <ul>
-            <li><a href="student-dashboard.html">Dashboard</a></li>
-            <li><a href="notices.html">Notices</a></li>
-            <li><a href="events.html">Events</a></li>
-            <li><a href="assignments.html">Assignments</a></li>
-            <li><a href="profile-update.html">Profile Update</a></li>
-            <li><a href="attendance.html" class="active">Attendance</a></li>
-            <li><a href="time-table.html">Time-table</a></li>
-            <li><a href="applications.html">Applications</a></li>
-        </ul>
+<div class="sidebar">
+    <ul>
+        <li><a href="teacher_dashboard.php" class="active">Dashboard</a></li>
+        <li><a href="attendance.html">Mark Attendance</a></li>
+        <li><a href="upload_assignment.html">Upload Assignment</a></li>
+        <li><a href="upload_event.php">Events</a></li>
+        <li><a href="forget_password_teacher.html">Forget or Update Password</a></li>
+        <li><a href="logout.html">Logout</a></li>
+    </ul>
+</div>
+
+<div class="main-content">
+    <div class="attendance-form">
+       <h2>Mark Attendance</h2>
+       <form id="attendanceForm" action="save_attendance.php" method="POST">
+        <label for="attendance_date">Attendance Date:</label>
+        <input type="date" id="attendance_date" name="attendance_date" required>
+
+        <label for="class_type">Class Type:</label>
+        <select id="class_type" name="class_type" required>
+            <option value="">Please Select</option>
+            <option value="Regular Lecture">Regular Lecture</option>
+            <option value="Extra Lecture">Extra Lecture</option>
+            <option value="Alternate Lecture">Alternate Lecture</option>
+        </select>
+
+        <label for="topic_covered">Topic Covered:</label>
+        <input type="text" id="topic_covered" name="topic_covered" required>
+
+        <label for="subject_name">Subject Name:</label>
+        <input type="text" id="subject_name" name="subject_name" required>
+
+        <label for="default_status">Default Status:</label>
+        <select id="default_status" name="default_status" required>
+            <option value="">Please Select</option>
+            <option value="P">Present</option>
+            <option value="A">Absent</option>
+        </select>
+
+        <label for="course">Course:</label>
+        <select id="course" name="course" required>
+            <option value="">Please Select</option>
+            <option value="BBA_CA">BBA_CA</option>
+            <option value="BCA">BCA</option>
+            <option value="BSC">BSC</option>
+        </select>
+
+        <label for="section">Section:</label>
+        <select id="section" name="section" required>
+            <option value="">Please Select</option>
+            <option value="A">A</option>
+            <option value="B">B</option>
+            <option value="C">C</option>
+        </select>
+
+        <div id="studentList"></div>
+
+        <button type="submit">Save Attendance</button>
+    </form>
     </div>
+</div>
+    
+<script>
+    $(document).ready(function() {
+        $("#course, #section").change(function() {
+            var course = $("#course").val();
+            var section = $("#section").val();
+            if (course && section) {
+                $.ajax({
+                    url: "fetch_students.php",
+                    type: "POST",
+                    data: {course: course, section: section},
+                    success: function(data) {
+                        $("#studentList").html(data);
+                    }
+                });
+            }
+        });
+    });
+</script>
 
-    <!-- Main Content -->
-    <div class="main-content">
-        <header>
-            <h1>Attendance</h1>
-            <p>Track your attendance month-wise and weekly.</p>
-        </header>
-
-        <section class="content">
-            <!-- Attendance Chart -->
-            <canvas id="attendanceChart" width="400" height="200"></canvas>
-        </section>
-    </div>
-
-    <script>
-        // Dummy data for attendance
-        const attendanceData = {
-            labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
-            datasets: [
-                {
-                    label: 'January',
-                    data: [80, 90, 75, 85], // Replace with PHP data if needed
-                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                    borderColor: 'rgba(75, 192, 192, 1)',
-                    borderWidth: 1,
-                },
-                {
-                    label: 'February',
-                    data: [85, 95, 80, 90],
-                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                    borderColor: 'rgba(255, 99, 132, 1)',
-                    borderWidth: 1,
-                },
-            ],
-        };
-
-        // Config for the chart
-        const config = {
-            type: 'bar',
-            data: attendanceData,
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: {
-                        position: 'top',
-                    },
-                    title: {
-                        display: true,
-                        text: 'Monthly and Weekly Attendance',
-                    },
-                },
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        title: {
-                            display: true,
-                            text: 'Attendance (%)',
-                        },
-                    },
-                    x: {
-                        title: {
-                            display: true,
-                            text: 'Weeks of the Month',
-                        },
-                    },
-                },
-            },
-        };
-
-        // Render the chart
-        const ctx = document.getElementById('attendanceChart').getContext('2d');
-        new Chart(ctx, config);
-    </script>
 </body>
 </html>
