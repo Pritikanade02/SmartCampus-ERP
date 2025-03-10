@@ -106,13 +106,14 @@ $conn->close();
             <p><strong>Roll No:</strong> <?php echo htmlspecialchars($_SESSION['student_id']); ?></p>
         </div>
         <ul>
-            <li><a href="student-dashboard.php">Dashboard</a></li>
+        <li><a href="student-dashboard.php">Dashboard</a></li>
             <li><a href="events.php">Events</a></li>
             <li><a href="view_assignment.php">Assignments</a></li>
-            <li><a href="profile-update.php" class="active">Profile Update</a></li>
-            <li><a href="#">Attendance</a></li>
+            <li><a href="profile-update.php">Profile Update</a></li>
+            <li><a href="view_attendance.php">Attendance</a></li>
             <li><a href="view_timtable_student.php">Time-table</a></li>
-            <li><a href="#">Applications</a></li>
+            <li><a href="student_view_result.html">Result</a></li>
+            <li><a href="forgot_password_student.html">Forget or Update Password</a></li>
             <li><a href="logout.html">Logout</a></li>
 
         </ul>

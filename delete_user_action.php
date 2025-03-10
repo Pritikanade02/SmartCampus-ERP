@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->bind_param("i", $id);
 
     if ($stmt->execute()) {
-        echo ucfirst($userType) . " deleted successfully!";
+        echo htmlspecialchars(ucfirst($userType)) . " deleted successfully!";
     } else {
         echo "Error deleting " . $userType . ": " . $conn->error;
     }

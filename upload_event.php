@@ -55,14 +55,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
     <div class="sidebar">
-        <div class="student-info">
+        <!-- <div class="student-info">
             <h2><?php echo htmlspecialchars($_SESSION['teacher_name']); ?></h2>
-        </div>
+        </div> -->
         <ul>
-            <li><a href="teacher_dashboard.php">Dashboard</a></li>
+        <li><a href="teacher_dashboard.php">Dashboard</a></li>
             <li><a href="attendance.html">Mark Attendance</a></li>
             <li><a href="upload_assignment.html">Upload Assignment</a></li>
             <li><a href="upload_event.php" class="active">Events</a></li>
+            <li><a href="forget_password_teacher.html">Forget or Update Password</a></li>
             <li><a href="logout.html">Logout</a></li>
         </ul>
     </div>

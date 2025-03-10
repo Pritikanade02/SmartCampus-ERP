@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Query to validate login using email
-    $query = "SELECT * FROM teacher WHERE email = ?";
+    $query = "SELECT * FROM teacher WHERE username = ?";
     $stmt = $conn->prepare($query);
     $stmt->bind_param("s", $email);  // Bind email to the query
     $stmt->execute();

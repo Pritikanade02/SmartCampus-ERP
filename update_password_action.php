@@ -42,5 +42,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 $conn->close();
-echo "<br><a href='Student-dashboard.php'>Back To Student Dashboard</a>";
+echo "<br><a href='login.html'>LOGIN AGAIN</a>";
 ?>

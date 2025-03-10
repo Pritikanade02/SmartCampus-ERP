@@ -40,7 +40,8 @@ $semester = $_SESSION['semester'];
             <li><a href="profile-update.php">Profile Update</a></li>
             <li><a href="view_attendance.php">Attendance</a></li>
             <li><a href="view_timtable_student.php">Time-table</a></li>
-            <li><a href="forgot_password_new.html">Forget or Update Password</a></li>
+            <li><a href="student_view_result.html">Result</a></li>
+            <li><a href="forgot_password_student.html">Forget or Update Password</a></li>
             <li><a href="logout.html">Logout</a></li>
         </ul>
     </div>
@@ -59,9 +60,19 @@ $semester = $_SESSION['semester'];
                 <a href="profile-update.php" class="card">Profile Update</a>
                 <a href="#" class="card">Attendance</a>
                 <a href="view_timtable_student.php" class="card">Time-table</a>
-                <a href="#" class="card">Applications</a>
+                <a href="student_view_result.html" class="card">Result</a>
             </div>
         </section>
     </div>
+
+    <script>
+    let student_id = localStorage.getItem("student_id");
+    if (!student_id) {
+        alert("Error: Student ID is missing.");
+        window.location.href = "login.html";
+    } else {
+        console.log("Student ID:", student_id);
+    }
+</script>
 </body>
 </html>

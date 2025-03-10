@@ -42,5 +42,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 $conn->close();
-echo "<br><a href='admin.html'>Back To Admin Dashboard</a>";
+echo "<br><a href='admin_login.php'>LOGIN AGAIN</a>";
 ?>

@@ -50,8 +50,8 @@ $conn->close();
             <li><a href="add-teacher.html">Add Teacher</a></li>
             <li><a href="delete_user.php">Delete User</a></li>
             <li><a href="update_user.php">Update User</a></li>
-            <li><a href="#">View Applications</a></li>
             <li><a href="admin_upload_timetable.php">Upload Time-table</a></li>
+            <li><a href="admin_upload_result.html">Upload Result</a></li>
             <li><a href="forget_password_admin.html">Forget or Update Password</a></li>
             <li><a href="logout.html">Logout</a></li>
         </ul>

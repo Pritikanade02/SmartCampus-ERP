@@ -56,7 +56,7 @@ body {
     transition: background 0.3s;
 }
 
-.sidebar ul li a.active {
+.sidebar ul li a:hover, .sidebar ul li a.active {
     background-color: #1abc9c;
 }
 
