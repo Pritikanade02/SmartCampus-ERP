@@ -27,20 +27,11 @@
     <div class="main-content">
         <h2>Upload Student Result</h2>
         <form id="filterForm">
-            <label>Course:</label>
-            <select id="course">
-                <option value="BBA_CA">BBA_CA</option>
-                <option value="BCA">BCA</option>
-                <option value="BSC">BSC</option>
-            </select>
+            <label>Course Name:</label>
+            <input type="text" id="course" required>
 
             <label>Semester:</label>
-            <select id="semester">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-            </select>
+            <input type="number" id="semester" min="1" max="8" required>
 
             <label>Section:</label>
             <input type="text" id="section" required>
@@ -63,15 +54,25 @@
 
     <script>
         function fetchStudents() {
-            let course = document.getElementById("course").value;
-            let semester = document.getElementById("semester").value;
-            let section = document.getElementById("section").value;
+            let course = document.getElementById("course").value.trim();
+            let semester = document.getElementById("semester").value.trim();
+            let section = document.getElementById("section").value.trim();
+
+            if (course === "" || semester === "" || section === "") {
+                alert("Please enter all fields!");
+                return;
+            }
 
             fetch(`fetch_students_result.php?course=${course}&semester=${semester}&section=${section}`)
             .then(response => response.json())
             .then(data => {
                 let table = document.getElementById("studentTable");
                 table.innerHTML = ""; 
+
+                if (data.length === 0) {
+                    table.innerHTML = "<tr><td colspan='3'>No students found!</td></tr>";
+                    return;
+                }
 
                 data.forEach(student => {
                     let row = `<tr>

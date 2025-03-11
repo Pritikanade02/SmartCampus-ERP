@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         // Update password in the database (WITHOUT hashing)
-        $sql = "UPDATE teacher SET password = ? WHERE email = ?";
+        $sql = "UPDATE teacher SET password = ? WHERE username = ?";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("ss", $new_password, $username);
 

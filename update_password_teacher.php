@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['username']) && !empty($_POST['username'])) {
         $username = $_POST['username'];
 
-        $sql = "SELECT * FROM teacher WHERE email = ?";
+        $sql = "SELECT * FROM teacher WHERE username = ?";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("s", $username);
         $stmt->execute();

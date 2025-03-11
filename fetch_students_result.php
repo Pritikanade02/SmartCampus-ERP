@@ -4,12 +4,12 @@ include "db_connect.php";
 // Ensure Content-Type is JSON
 header("Content-Type: application/json");
 
-$course = $_GET['course'] ?? '';
-$semester = $_GET['semester'] ?? '';
-$section = $_GET['section'] ?? '';
+$course = isset($_GET['course']) ? trim($_GET['course']) : "";
+$semester = isset($_GET['semester']) ? trim($_GET['semester']) : "";
+$section = isset($_GET['section']) ? trim($_GET['section']) : "";
 
 if (empty($course) || empty($semester) || empty($section)) {
-    echo json_encode(["error" => "Missing parameters"]);
+    echo json_encode([]);
     exit;
 }
 
