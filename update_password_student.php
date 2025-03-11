@@ -68,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </style>
                 </head>
                 <body>
-                    <form action='update_password_student_action.php' method='POST'>
+                    <form action='update_password_action.php' method='POST'>
                         <input type='hidden' name='username' value='$username'>
                         <label for='password'>New Password:</label><br>
                         <input type='password' id='password' name='password' required><br>

@@ -147,11 +147,12 @@ $semester = $_SESSION["semester"];
 </head>
 <body>
     <div class="sidebar">
-        <div class="student-info">
+        <!-- <div class="student-info">
             <h2><?php echo $_SESSION['student_name']; ?></h2>
             <p><strong>Course:</strong> <?php echo $course; ?></p>
             <p><strong>Semester:</strong> <?php echo $semester; ?></p>
-        </div>
+        </div> -->
+        <h2 style="color: white;">Student Dashboard</h2>
         <ul>
         <li><a href="student-dashboard.php">Dashboard</a></li>
             <li><a href="events.php">Events</a></li>

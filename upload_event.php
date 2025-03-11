@@ -63,6 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <li><a href="attendance.html">Mark Attendance</a></li>
             <li><a href="upload_assignment.html">Upload Assignment</a></li>
             <li><a href="upload_event.php" class="active">Events</a></li>
+            <li><a href="teacher_view_timetable.html">View Timetable</a></li>
             <li><a href="forget_password_teacher.html">Forget or Update Password</a></li>
             <li><a href="logout.html">Logout</a></li>
         </ul>

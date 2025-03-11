@@ -31,6 +31,7 @@ $teacherName = $_SESSION['teacher_name'];
             <li><a href="attendance.html">Mark Attendance</a></li>
             <li><a href="upload_assignment.html">Upload Assignment</a></li>
             <li><a href="upload_event.php">Events</a></li>
+            <li><a href="teacher_view_timetable.html">View Timetable</a></li>
             <li><a href="forget_password_teacher.html">Forget or Update Password</a></li>
             <li><a href="logout.html">Logout</a></li>
         </ul>
@@ -45,7 +46,7 @@ $teacherName = $_SESSION['teacher_name'];
         <!-- Features Section -->
         <section class="features">
             <div class="feature-block">
-                <a href="mark-attendance.php">
+                <a href="attendance.html">
                     <h3>Mark Attendance</h3>
                 </a>
             </div>
@@ -57,6 +58,11 @@ $teacherName = $_SESSION['teacher_name'];
             <div class="feature-block">
                 <a href="upload_event.php">
                     <h3>Upload Events</h3>
+                </a>
+            </div>
+            <div class="feature-block">
+                <a href="teacher_view_timetable.html">
+                    <h3>View TimeTable</h3>
                 </a>
             </div>
         </section>

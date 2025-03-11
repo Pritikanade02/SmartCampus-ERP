@@ -100,11 +100,12 @@ $conn->close();
 <body>
     <!-- Sidebar -->
     <div class="sidebar">
-        <div class="student-info">
+        <!-- <div class="student-info">
             <h2><?php echo htmlspecialchars($_SESSION['student_name']); ?></h2>
             <p><strong>Class:</strong> <?php echo htmlspecialchars($_SESSION['course']); ?> - Semester <?php echo htmlspecialchars($_SESSION['semester']); ?></p>
             <p><strong>Roll No:</strong> <?php echo htmlspecialchars($_SESSION['student_id']); ?></p>
-        </div>
+        </div> -->
+        <h2>Student Dashboard</h2>
         <ul>
         <li><a href="student-dashboard.php">Dashboard</a></li>
             <li><a href="events.php">Events</a></li>

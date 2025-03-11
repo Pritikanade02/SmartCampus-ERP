@@ -34,10 +34,11 @@ $result = $conn->query($query);
 <body>
     <!-- Sidebar -->
     <div class="sidebar">
-        <div class="student-info">
+        <!-- <div class="student-info">
             <h2><?php echo htmlspecialchars($_SESSION['student_name']); ?></h2>
             <p><?php echo htmlspecialchars($_SESSION['course']) . ' - ' . $_SESSION['semester']; ?></p>
-        </div>
+        </div> -->
+        <h2>Student Dashboard</h2>
         <ul>
         <li><a href="student-dashboard.php">Dashboard</a></li>
             <li><a href="events.php">Events</a></li>

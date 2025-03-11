@@ -31,6 +31,7 @@ foreach ($attendance as $student_id => $status) {
 }
 
 echo "Attendance saved successfully!";
+echo "<br><a href='teacher_dashboard.php'>Go to Dashboard</a>";
 $stmt->close();
 $conn->close();
 ?>

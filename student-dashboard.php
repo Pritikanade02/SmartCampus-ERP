@@ -58,7 +58,7 @@ $semester = $_SESSION['semester'];
                 <a href="events.php" class="card">Events</a>
                 <a href="view_assignment.php" class="card">Assignments</a>
                 <a href="profile-update.php" class="card">Profile Update</a>
-                <a href="#" class="card">Attendance</a>
+                <a href="view_attendance.php" class="card">Attendance</a>
                 <a href="view_timtable_student.php" class="card">Time-table</a>
                 <a href="student_view_result.html" class="card">Result</a>
             </div>
